@@ -30,59 +30,62 @@ body {
   margin-top: -32px; /*esto se come los poligonos para que los picos no revienten la pantalla*/
   /*overflow: hidden;*/   /*me quita parte de los pentagonos.*/
 }
+
 .row:nth-child(even) {
-  margin-left: 1px;
-}
-.row.pair > .pentagon {
-  transform: rotateX(180deg) ;
-  transition: 0s;
-  top: 16px;
-  z-index: 100;
-}
-.row.impair > .pentagon {
- z-index: 50;
+  margin-left: 1px !important; /* margen de correccion */
 }
 
-/*Hexagon*/
-.hexagon {
+.polygone {
   position: relative;
   background: #111;
   height: 110px;
   width: 100px;
   margin: 1px;
   transition: 0.67s;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
-.hexagon::before {
+
+.polygone::before{
   position: absolute;
   content: "";
   height: 100%;
   width: 50%;
   background: rgba(25, 25, 25, 0.23);
 }
-.hexagon:hover {
+
+.polygone:hover {
   transition: 0s;
   background: #f0f; /*clor por defecto*/
 }
 
-/*Pentagon*/
+/*----------------Hexagon-------------*/
+.hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+
+/*----------------Pentagon----------------*/
 .pentagon {
-  position: relative;
-  background: #111;
-  height: 110px;
-  width: 100px;
-  margin: 1px;
-  transition: 2s;
   clip-path: polygon(50% 0%, 100% 38%, 82% 95%, 18% 95%, 0% 38%);
 }
-.pentagon::before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 50%;
-  background: rgba(255, 255, 255, 0.1);
+.pentagon::before{
+    background: rgba(255, 255, 255, 0.23);
 }
-.pentagon:hover {
-  transition: 0.1s;
-  background: #f0f; /*clor por defecto*/
+/* Los pentagonos pares se giran. para que no queden demasiado mal*/
+.row:nth-child(even) > .pentagon {
+  transform: rotateX(180deg) ;
+  top: 16px;
+  z-index: 100;
+}
+
+/*----------------Pentagon----------------*/
+.rhombus {
+  width: 130px;
+  height: 130px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/*.row y .r juntos. sin espacio. es un hotfix algo malo para cambiar los margenes de .row cuando estoy en rombos*/ 
+.row.r  {
+  margin-left: -65px;
+  margin-top: -65px;
 }
