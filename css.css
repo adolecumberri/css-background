@@ -54,7 +54,7 @@ body {
 
 .polygone:hover {
   transition: 0s;
-  background: #f0f; /*clor por defecto*/
+  background: #ff00ffde; /*clor por defecto*/
 }
 
 /*----------------Hexagon-------------*/
